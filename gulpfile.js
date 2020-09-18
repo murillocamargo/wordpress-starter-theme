@@ -30,7 +30,6 @@ function clean() {
 
 // CSS task
 function css() {
-
     return gulp
         .src("./source/scss/main.scss")
         .pipe(plumber())
@@ -53,23 +52,21 @@ function scriptsLint() {
 // Transpile, concatenate and minify scripts
 
 function scripts() {
-    return (
-        gulp
-            .src(["./source/scripts/libs/*.js", "./source/scripts/frontend.js"])
-            .pipe(plumber())
-            .pipe(babel({
-                presets: [['env', {
-                    loose: true,
-                    modules: false,
-                    exclude: ['transform-es2015-typeof-symbol']
-                }]],
-                plugins: ['@babel/plugin-proposal-object-rest-spread']
-            }))
-            .pipe(concat('frontend.js'))
-            .pipe(uglify())
-            .pipe(rename({suffix: ".min"}))
-            .pipe(gulp.dest("./assets/scripts/"))
-    );
+    return gulp
+        .src(["./source/scripts/libs/*.js", "./source/scripts/frontend.js"])
+        .pipe(plumber())
+        .pipe(babel({
+            presets: [['env', {
+                loose: true,
+                modules: false,
+                exclude: ['transform-es2015-typeof-symbol']
+            }]],
+            plugins: ['@babel/plugin-proposal-object-rest-spread']
+        }))
+        .pipe(concat('frontend.js'))
+        .pipe(uglify())
+        .pipe(rename({suffix: ".min"}))
+        .pipe(gulp.dest("./assets/scripts/"))
 }
 
 // Optimize Images
