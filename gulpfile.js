@@ -8,12 +8,11 @@ const cssnano = require("cssnano");
 const concat = require('gulp-concat');
 const del = require("del");
 const eslint = require("gulp-eslint");
-const imagemin = require("gulp-imagemin");
 const newer = require("gulp-newer");
 const plumber = require("gulp-plumber");
 const postcss = require("gulp-postcss");
 const rename = require("gulp-rename");
-const sass = require("gulp-sass");
+const sass = require('gulp-sass')(require('node-sass'));
 const sassGlob = require('gulp-sass-glob');
 const uglify = require('gulp-uglify');
 const gulp = require("gulp");
@@ -69,29 +68,6 @@ function scripts() {
         .pipe(gulp.dest("./assets/scripts/"))
 }
 
-// Optimize Images
-function images() {
-    return gulp
-        .src("./source/images/**/*")
-        .pipe(newer("./assets/images"))
-        .pipe(
-            imagemin([
-                imagemin.gifsicle({interlaced: true}),
-                imagemin.mozjpeg({quality: 75, progressive: true}),
-                imagemin.optipng({optimizationLevel: 5}),
-                imagemin.svgo({
-                    plugins: [
-                        {
-                            removeViewBox: false,
-                            collapseGroups: true
-                        }
-                    ]
-                })
-            ])
-        )
-        .pipe(gulp.dest("./assets/images"));
-}
-
 function copyAssets() {
     return gulp
         .src("./assets/**/*")
@@ -133,13 +109,13 @@ function browserSyncReload(done) {
 function watchFiles() {
     gulp.watch("./source/scss/**/*", gulp.series(css, browserSyncReload));
     gulp.watch("./source/scripts/**/*", gulp.series(scriptsLint, scripts, browserSyncReload));
-    gulp.watch("./source/images/**/*", gulp.series(images, browserSyncReload));
+    gulp.watch("./source/images/**/*", gulp.series(browserSyncReload));
     gulp.watch("./**/*.{html,php}", gulp.series(browserSyncReload));
 }
 
 // define complex tasks
 const js = gulp.series(scriptsLint, scripts);
-const assets = gulp.parallel(css, images, js);
+const assets = gulp.parallel(css, js);
 const copy = gulp.parallel(copyAssets, copyStructure, copyComponents);
 
 const build = gulp.series(clean, assets, copy);
