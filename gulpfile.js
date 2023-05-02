@@ -7,38 +7,22 @@ const cssnano = require("cssnano");
 const del = require("del");
 const eslint = require("gulp-eslint");
 const plumber = require("gulp-plumber");
-const postcss = require("gulp-postcss");
-const rename = require("gulp-rename");
-const sass = require('gulp-sass')(require('node-sass'));
-const sassGlob = require('gulp-sass-glob');
 const sourcemaps = require('gulp-sourcemaps');
 const gulp = require("gulp");
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const tailwindcss = require("tailwindcss");
 
 // Clean assets
 function clean() {
   return del(['./dist', './assets/css', './assets/scripts', './assets/images']);
 }
 
-// CSS task
-function css() {
-  return gulp
-    .src("./source/scss/main.scss")
-    .pipe(plumber())
-    .pipe(sassGlob())
-    .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: "expanded"}))
-    .pipe(postcss([autoprefixer(), cssnano()]))
-    .pipe(rename({basename: "frontend", suffix: ".min"}))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest("./assets/css/"));
-}
-
 // Lint scripts
 function scriptsLint() {
   return gulp
-    .src(["./source/app.ts"])
+    .src(["./source/index.ts"])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -47,7 +31,7 @@ function scriptsLint() {
 // Transpile, concatenate and minify scripts
 function scripts() {
   return gulp
-    .src("./source/app.ts")
+    .src("./source/index.ts")
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(webpackStream({
@@ -75,11 +59,31 @@ function scripts() {
               },
             },
           },
+          {
+            test: /\.css$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              "css-loader",
+              {
+                loader: "postcss-loader",
+                options: {
+                  postcssOptions: {
+                    plugins: [tailwindcss(), autoprefixer(), cssnano()],
+                  },
+                },
+              },
+            ],
+          },
         ],
       },
       resolve: {
         extensions: ['.tsx', '.ts', '.js'],
       },
+      plugins: [
+        new MiniCssExtractPlugin({
+          filename: "../css/frontend.min.css",
+        }),
+      ],
       devtool: 'source-map',
     }, webpack))
     .pipe(sourcemaps.write('.'))
@@ -122,15 +126,15 @@ function browserSyncReload(done) {
 
 // Watch files
 function watchFiles() {
-  gulp.watch("./source/scss/**/*", gulp.series(css, browserSyncReload));
-  gulp.watch("./source/scripts/**/*", gulp.watch("./source/scripts/**/*", gulp.series(scriptsLint, scripts, browserSyncReload)));
-  gulp.watch("./source/images/**/*", gulp.series(browserSyncReload));
-  gulp.watch("./**/*.{html,php}", gulp.series(browserSyncReload));
+  gulp.watch([
+      "./source/**/*",
+      "./**/*.php"],
+    gulp.series(js, browserSyncReload));
 }
 
 // define complex tasks
 const js = gulp.series(scriptsLint, scripts);
-const assets = gulp.parallel(css, js);
+const assets = js;
 const copy = gulp.parallel(copyAssets, copyStructure, copyComponents);
 
 const build = gulp.series(clean, assets, copy);

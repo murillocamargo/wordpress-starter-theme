@@ -1,0 +1,17 @@
+@layer base {
+  html, body {
+    @apply h-full;
+  }
+
+  body {
+    @apply flex flex-col;
+  }
+
+  #main {
+    @apply flex-1 flex-shrink-0;
+  }
+
+  #footer {
+    @apply flex-shrink-0;
+  }
+}

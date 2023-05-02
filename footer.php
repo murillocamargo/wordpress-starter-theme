@@ -1,12 +1,7 @@
 <div id="footer">
-
-    <div class="container">
-        <div class="row">
-            <h3 class="text-center" style="color: #FFF; margin-top: 15px">Footer</h3>
-        </div>
-
+    <div class="container mx-auto">
+        <h3 class="text-center">Footer</h3>
     </div>
-
 </div>
 <!-- /#footer -->
 
