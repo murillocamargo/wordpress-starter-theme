@@ -2,6 +2,6 @@
    Main.ts
    ========================================================================== */
 
-import "./base";
-import "./components";
-import "./utilities";
+import './base';
+import './components';
+import './utilities';

@@ -2,4 +2,4 @@
    Test
    ========================================================================== */
 
-console.log("TEST FILE IMPORTED TO BUNDLE");
+console.log('TEST FILE IMPORTED TO BUNDLE');

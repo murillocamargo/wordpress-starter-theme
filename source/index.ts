@@ -2,5 +2,5 @@
    APP
    ========================================================================== */
 
-import "./scripts/app.ts";
-import "./styles/app.css";
+import './scripts/app.ts';
+import './styles/app.css';

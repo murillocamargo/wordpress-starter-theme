@@ -2,4 +2,4 @@
    Component
    ========================================================================== */
 
-console.log("COMPONENT FILE IMPORTED TO BUNDLE");
+console.log('COMPONENT FILE IMPORTED TO BUNDLE');

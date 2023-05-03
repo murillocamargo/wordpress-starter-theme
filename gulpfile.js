@@ -1,18 +1,18 @@
 'use strict';
 
 // Load plugins
-const autoprefixer = require("autoprefixer");
-const browsersync = require("browser-sync").create();
-const cssnano = require("cssnano");
-const del = require("del");
-const eslint = require("gulp-eslint");
-const plumber = require("gulp-plumber");
+const autoprefixer = require('autoprefixer');
+const browsersync = require('browser-sync').create();
+const cssnano = require('cssnano');
+const del = require('del');
+const eslint = require('gulp-eslint');
+const plumber = require('gulp-plumber');
 const sourcemaps = require('gulp-sourcemaps');
-const gulp = require("gulp");
+const gulp = require('gulp');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const tailwindcss = require("tailwindcss");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const tailwindcss = require('tailwindcss');
 
 // Clean assets
 function clean() {
@@ -22,7 +22,7 @@ function clean() {
 // Lint scripts
 function scriptsLint() {
   return gulp
-    .src(["./source/index.ts"])
+    .src(['./source/scripts/*.{js,ts,tsx}'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -31,7 +31,7 @@ function scriptsLint() {
 // Transpile, concatenate and minify scripts
 function scripts() {
   return gulp
-    .src("./source/index.ts")
+    .src('./source/index.ts')
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(webpackStream({
@@ -63,9 +63,9 @@ function scripts() {
             test: /\.css$/,
             use: [
               MiniCssExtractPlugin.loader,
-              "css-loader",
+              'css-loader',
               {
-                loader: "postcss-loader",
+                loader: 'postcss-loader',
                 options: {
                   postcssOptions: {
                     plugins: [tailwindcss(), autoprefixer(), cssnano()],
@@ -81,30 +81,30 @@ function scripts() {
       },
       plugins: [
         new MiniCssExtractPlugin({
-          filename: "../css/frontend.min.css",
+          filename: '../css/frontend.min.css',
         }),
       ],
       devtool: 'source-map',
     }, webpack))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest("./assets/scripts/"));
+    .pipe(gulp.dest('./assets/scripts/'));
 }
 
 function copyAssets() {
   return gulp
-    .src("./assets/**/*")
+    .src('./assets/**/*')
     .pipe(gulp.dest('dist/assets'));
 }
 
 function copyStructure() {
   return gulp
-    .src(["./*.{html,php}", "./*.css"])
+    .src(['./*.{html,php}', './*.css'])
     .pipe(gulp.dest('dist'));
 }
 
 function copyComponents() {
   return gulp
-    .src("./inc/**/*")
+    .src('./inc/**/*')
     .pipe(gulp.dest('dist/inc'));
 }
 
@@ -127,8 +127,8 @@ function browserSyncReload(done) {
 // Watch files
 function watchFiles() {
   gulp.watch([
-      "./source/**/*",
-      "./**/*.php"],
+      './source/**/*',
+      './**/*.php'],
     gulp.series(js, browserSyncReload));
 }
 
