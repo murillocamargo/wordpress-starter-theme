@@ -1,8 +1,0 @@
-.env
-composer.json
-composer.lock
-config/project
-package-lock.json
-package.json
-storage
-vendor

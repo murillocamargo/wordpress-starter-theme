@@ -1,5 +1,6 @@
 @layer base {
-  html, body {
+  html,
+  body {
     @apply h-full;
   }
 
