@@ -3,3 +3,7 @@ dist
 assets
 package-lock.json
 package.json
+tailwind.config.js
+postcss.config.js
+gulpfile.js
+.eslintrc
