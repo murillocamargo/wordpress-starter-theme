@@ -1,5 +1,11 @@
 # Wordpress Starter Theme
+
 Basic theme structure for Wordpress custom development
+
+## Prerequisites
+
+- Node
+- NVM
 
 ## Assets
 
@@ -10,68 +16,75 @@ Basic theme structure for Wordpress custom development
 - Alpine.js
 
 ### Managers
-- Gulp v4.x
 - Webpack
 
-#### Gulp & NPM modules
+#### NPM modules
 - @babel/core
-- @babel/plugin-proposal-object-rest-spread
+- @babel/plugin-proposal-class-properties
+- @babel/plugin-proposal-decorators
+- @babel/plugin-transform-runtime
 - @babel/preset-env
-- @types/alpinejs
+- @babel/preset-typescript
 - alpinejs
-- async
 - autoprefixer
-- babel-plugin-transform-es2015-modules-strip
-- babel-preset-env
+- babel-loader
+- core-js
+- critical
 - css-loader
 - cssnano
-- eslint
-- glob-parent
-- gulp
-- gulp-babel
-- gulp-concat
-- gulp-eslint
-- gulp-imagemin
-- gulp-mode
-- gulp-plumber
-- gulp-postcss
-- gulp-rename
-- gulp-sass
-- gulp-sass-glob
-- gulp-sourcemaps
-- gulp-uglify
+- cssnano-preset-lite
+- dialog-polyfill
+- dotenv
+- file-loader
+- focus-visible
+- lazysizes
 - mini-css-extract-plugin
-- node-sass
-- postcss
-- postcss-import
-- postcss-import-ext-glob
+- node-fetch
+- postcss-easing-gradients
+- postcss-easy-import
+- postcss-focus-visible
+- postcss-inline-svg
 - postcss-loader
-- semver-regex
+- postcss-nesting
+- raw-loader
 - tailwindcss
-- ts-loader
 - typescript
 - webpack
-- webpack-stream
+- webpack-cli
+- webpack-livereload-plugin
+- webpack-manifest-plugin
 
-### Dependencies
-- browser-sync
-- del
-- lodash.template
+### Development Dependencies
+- @prettier/plugin-php
+- @types/alpinejs
+- @types/tailwindcss
+- cross-env
+- jsdom
+- postcss
+- postcss-import
+- prettier
+
+### Linting
+- lint-staged
 
 ## Usage
 
-1. Install dependencies, packages and initial structure
+1. Create a `.env` with `cp .env.example .env`
+
+2. Run `nvm use`
+
+3. Install dependencies, packages, and initial structure
 
 ```sh
-  $ npm install
-  ```
-2. Build project
+$ npm install
+```
+4. Build project for development
 
 ```sh
-  $ gulp build
-  ```
-3. Build && Watch files
+$ npm run start
+```
+5. Build project for production
 
 ```sh
-  $ gulp
-  ```
+$ npm run prod
+```

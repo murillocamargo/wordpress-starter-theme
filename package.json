@@ -1,11 +1,11 @@
 {
-  "name": "frontend-boilerplate",
+  "name": "wordpress-starter-theme",
   "version": "1.0.0",
-  "description": "Front-end Boilerplate",
+  "description": "Wordpress Starter Theme",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/murillocamargo/Front-end-Boilerplate.git"
+    "url": "https://github.com/murillocamargo/wordpress-starter-theme"
   },
   "scripts": {
     "start": "webpack --mode development",
@@ -14,7 +14,7 @@
   },
   "author": "Murillo Camargo <murillo@murillocamargo.com.br>",
   "license": "MIT",
-  "homepage": "https://github.com/murillocamargo/Front-end-Boilerplate",
+  "homepage": "https://github.com/murillocamargo/wordpress-starter-theme",
   "browserslist": [
     "last 2 versions",
     "> 0.5%",
