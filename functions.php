@@ -6,38 +6,112 @@ define('THEME_DOCUMENT_ROOT', get_template_directory());
 define('STYLE_WEB_ROOT', get_stylesheet_directory_uri());
 define('STYLE_DOCUMENT_ROOT', get_stylesheet_directory());
 
-add_theme_support('post-thumbnails');
-
-function my_init()
+/**
+ * Get cache busting hashed filename from manifest.
+ *
+ * @param string $filename Original name of the file.
+ * @return string Current cache busting hashed name of the file.
+ */
+function custom_theme_get_asset_path(string $filename): string
 {
-    add_theme_support('post-thumbnails');
+    static $manifest = null;
 
-    if (!is_admin()) {
+    if (null === $manifest) {
+        $manifest_path = get_stylesheet_directory() . "/dist/manifest.json";
+        $manifest = file_exists($manifest_path)
+            ? json_decode(file_get_contents($manifest_path), true)
+            : [];
+    }
 
-        wp_deregister_script('jquery');
-        wp_deregister_script('jquery-migrate');
+    if (array_key_exists($filename, $manifest)) {
+        return $manifest[$filename];
+    }
 
-        wp_register_script('main-js', get_template_directory_uri() . '/assets/scripts/frontend.min.js', false, '1.0.0', true);
-        wp_register_style('main-css', get_template_directory_uri() . '/assets/css/frontend.min.css');
+    return $filename;
+}
 
-        wp_enqueue_style('material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', false);
+/*********************
+ * ENQUEUE FILES CSS/JS
+ *********************/
 
-        wp_enqueue_script('main-js');
-        wp_enqueue_style('main-css');
+// Enqueue theme styles and scripts.
+function custom_theme_enqueue_assets()
+{
+    if (is_admin() === false) {
+        wp_enqueue_style(
+            "custom-theme-dist-main",
+            STYLE_WEB_ROOT . "/dist/" . custom_theme_get_asset_path("main.css"),
+            [],
+            false,
+            "print",
+        );
+
+        wp_enqueue_script(
+            "custom-theme-dist-main",
+            STYLE_WEB_ROOT . "/dist/" . custom_theme_get_asset_path("main.js"),
+            [],
+            false,
+            true
+        );
     }
 }
 
-function register_my_menu()
+add_action('wp_enqueue_scripts', 'custom_theme_enqueue_assets');
+
+// Load styles async.
+add_filter("style_loader_tag", function ($tag) {
+    if (preg_match("/custom-theme-dist-main/", $tag) !== 1) {
+        return $tag;
+    }
+
+    return preg_replace("/ \/>$/", " onload=\"this.media='all'\" />", $tag);
+});
+
+// Defer Javscript loading.
+add_filter("script_loader_tag", function ($tag) {
+    if (preg_match("/custom-theme-dist-main/", $tag) !== 1) {
+        return $tag;
+    }
+
+    return preg_replace("/^\<script /", "<script defer ", $tag);
+});
+
+/*********************
+ * THEME SUPPORT
+ *********************/
+
+add_action("after_setup_theme", "custom_theme_support");
+function custom_theme_support()
 {
-    register_nav_menu('main-menu', __('Main Menu'));
+    // thumbnails
+    add_theme_support('post-thumbnails');
+
+    // wp menus
+    add_theme_support("menus");
+
+    // registering wp3+ menus
+    register_nav_menus([
+        "main-nav" => __("The Main Menu", "custom-theme"),
+    ]);
 }
 
-add_action('wp_enqueue_scripts', 'my_init');
-add_action('init', 'register_my_menu');
+/*********************
+ * IMAGE SIZES
+ *********************/
 
 //reserved words: ‘thumb’, ‘thumbnail’, ‘medium’, ‘large’, ‘post-thumbnail’
+
 set_post_thumbnail_size(300, 200, true);
+
 //add_image_size('main-headline', 640, 350, true);
+
+/*********************
+ * UTILITIES
+ *********************/
+
+require_once get_template_directory() . '/includes/utilities/acf-settings.php';
+require_once get_template_directory() . '/includes/utilities/acf-option-pages.php';
+require_once get_template_directory() . '/includes/utilities/gutenberg-blocks.php';
 
 // remove junk from head
 remove_action('wp_head', 'rsd_link');

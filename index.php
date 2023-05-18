@@ -3,7 +3,7 @@
 <!-- CONTENT -->
 
 <main id="main">
-    <div class="container mx-auto">
+    <div class="container text-center">
         <h2 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h2>
         <p>Developed by Murillo Camargo <a href="mailto:murillo@murillocamargo.com.br">murillo@murillocamargo.com.br</a></p>
     </div>

@@ -1,7 +1,2 @@
-.idea
 node_modules
-bower_components
-/dist
-/assets/css
-/assets/images
-/assets/scripts
+.env

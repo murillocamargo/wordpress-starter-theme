@@ -2,11 +2,11 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "lib": ["es2015", "es2018", "esnext", "dom", "dom.iterable"],
     "strict": true,
     "esModuleInterop": true,
-    "sourceMap": true
-  },
-  "include": [
-    "source/scripts/**/*.ts"
-  ]
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true
+  }
 }

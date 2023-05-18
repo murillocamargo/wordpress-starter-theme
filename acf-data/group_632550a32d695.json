@@ -1,0 +1,523 @@
+{
+    "key": "group_632550a32d695",
+    "title": "[Option Page] - Home page",
+    "fields": [
+        {
+            "key": "field_632e0b687e3a1",
+            "label": "Topo da página",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_632e8570d64e7",
+            "label": "Chamada Principal",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_632550d4ccb13",
+            "label": "Chamada Principal",
+            "name": "chamada_principal_home",
+            "type": "relationship",
+            "instructions": "Selecione 01 post destaque ou deixe que seja exibido automaticamente.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "cooxupenews"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": 1,
+            "elements": [
+                "featured_image"
+            ]
+        },
+        {
+            "key": "field_632e85eb80cb2",
+            "label": "Lista de 03 chamadas",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_63255155ccb14",
+            "label": "Lista de 03 chamadas",
+            "name": "lista_chamadas_topo_home",
+            "type": "relationship",
+            "instructions": "Selecione 03 posts ou deixe que seja exibido automaticamente.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": 3,
+            "elements": [
+                "featured_image"
+            ]
+        },
+        {
+            "key": "field_632e0ca4d726c",
+            "label": "Meio da página",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_632e85f880cb3",
+            "label": "Conteúdo de Opinião",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_63260bcb25a54",
+            "label": "Conteúdo de Opinião",
+            "name": "box_opiniao_home",
+            "type": "relationship",
+            "instructions": "Selecione 03 posts contendo Conteúdo de Opinião ou deixe que seja exibido automaticamente.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": "",
+            "taxonomy": [
+                "category:artigos"
+            ],
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": 3,
+            "elements": ""
+        },
+        {
+            "key": "field_632e86539950e",
+            "label": "Mais Lidas",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_63262acf77727",
+            "label": "Mais Lidas",
+            "name": "mais_lidas_home",
+            "type": "relationship",
+            "instructions": "Selecione até 05 matérias mais lidas. Atenção: sempre preencher.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": "",
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": 5,
+            "elements": [
+                "featured_image"
+            ]
+        },
+        {
+            "key": "field_632e866d9950f",
+            "label": "Chamada com foto de fundo",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_63262ca83bf94",
+            "label": "Chamada com foto de fundo",
+            "name": "chamada_foto_fundo_home",
+            "type": "relationship",
+            "instructions": "Selecione 01 post ou deixe que seja exibido automaticamente.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": 1,
+            "elements": [
+                "featured_image"
+            ]
+        },
+        {
+            "key": "field_632e868699510",
+            "label": "Chamada dupla(Abaixo da Newsletter)",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_632637c72630d",
+            "label": "Chamada dupla(Abaixo da Newsletter)",
+            "name": "chamada_dupla_news_home",
+            "type": "relationship",
+            "instructions": "Selecione 02 chamadas abaixo da Newsletter ou deixe que seja exibido automaticamente.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": 2,
+            "elements": [
+                "featured_image"
+            ]
+        },
+        {
+            "key": "field_63322664e68f9",
+            "label": "Última edição da Newsletter",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_633226d3f5b73",
+            "label": "Data da última edição",
+            "name": "news_last_edition",
+            "type": "text",
+            "instructions": "Sempre preencher.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Exemplo: 07 de junho de 2022",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6332275a7c133",
+            "label": "Breve descrição da Newsletter",
+            "name": "news_preview_description",
+            "type": "text",
+            "instructions": "Uma breve descrição\/título da Newsletter.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Exemplo: Núcleo de Educação Ambiental promove sustentabilidade entre produtores e comunidade",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_63322693f5b72",
+            "label": "Preview da Newsletter - 03 chamadas",
+            "name": "news_preview_03_chamadas",
+            "type": "relationship",
+            "instructions": "Selecione 03 chamadas obrigatoriamente.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": 3,
+            "elements": [
+                "featured_image"
+            ]
+        },
+        {
+            "key": "field_63322825b8554",
+            "label": "URL da Newsletter completa",
+            "name": "url_full_newsletter",
+            "type": "url",
+            "instructions": "Incluir a URL para visualização da newsletter completa.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_632e0ccad726d",
+            "label": "Inferior da página",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_632e869f99511",
+            "label": "Chamada sem foto (com fundo claro)",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_63263b1b24db4",
+            "label": "Chamada sem foto (com fundo claro)",
+            "name": "chamada_no_bg_home",
+            "type": "relationship",
+            "instructions": "Selecione 01 post ou deixe que seja exibido automaticamente.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": 1,
+            "elements": [
+                "featured_image"
+            ]
+        },
+        {
+            "key": "field_632e86af99512",
+            "label": "Chamada dupla (ao lado da chamada com background claro)",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_63263a86bdc3b",
+            "label": "Chamada dupla (ao lado da chamada com background claro)",
+            "name": "chamada_dupla_bgclaro_home",
+            "type": "relationship",
+            "instructions": "Selecione 02 posts ou deixe que seja exibido automaticamente.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": 2,
+            "elements": [
+                "featured_image"
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "edit-home"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1683323155
+}
