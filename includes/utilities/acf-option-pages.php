@@ -7,8 +7,8 @@
 if (function_exists('acf_add_options_page')) {
 
     acf_add_options_page(array(
-        'page_title' => 'Home',
-        'menu_title' => 'Home',
+        'page_title' => 'Example',
+        'menu_title' => 'Example',
         'menu_slug' => 'edit-home',
         'capability' => 'edit_posts',
         'redirect' => false,
