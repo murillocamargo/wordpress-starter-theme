@@ -1,14 +1,13 @@
 /**
- * APP
- */
-
-@import-glob "./base/**/*.css";
-@import-glob "./components/**/*.css";
-@import-glob "./utilities/**/*.css";
-
-/**
  * Tailwind
  */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/**
+ * APP
+ */
+@import "./base/**";
+@import "./components/**";
+@import "./utilities/**";
