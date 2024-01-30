@@ -1,9 +1,9 @@
 node_modules
 dist
-assets
+acf-data
 package-lock.json
 package.json
 tailwind.config.js
 postcss.config.js
-gulpfile.js
 .eslintrc
+.cache
