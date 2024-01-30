@@ -2,6 +2,7 @@ const path = require("path");
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const LiveReloadPlugin = require("webpack-livereload-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = (_env, options) => {
   const devMode = options.mode !== "production";
@@ -30,6 +31,12 @@ module.exports = (_env, options) => {
           test: /\.(ts|js)x?$/,
           use: [
             {
+              loader: "thread-loader",
+              options: {
+                workers: 2,
+              },
+            },
+            {
               loader: "babel-loader",
             },
           ],
@@ -37,7 +44,7 @@ module.exports = (_env, options) => {
         },
         {
           test: /\.css$/,
-          exclude: /node_modules/,
+          exclude: /node_modules\/(?!splitting)/,
           use: [
             MiniCssExtractPlugin.loader,
             {
@@ -77,6 +84,10 @@ module.exports = (_env, options) => {
       ],
     },
     plugins: [
+      new Dotenv({
+        systemvars: true,
+        path: path.resolve(__dirname, ".env"),
+      }),
       new MiniCssExtractPlugin({
         filename: "[name].css",
         chunkFilename: "[id].css",
@@ -102,5 +113,12 @@ module.exports = (_env, options) => {
       }),
       ...(devMode ? [new LiveReloadPlugin()] : []),
     ],
+    cache: {
+      type: "filesystem",
+      cacheDirectory: path.resolve(__dirname, ".cache"),
+      buildDependencies: {
+        config: [__filename],
+      },
+    },
   };
 };

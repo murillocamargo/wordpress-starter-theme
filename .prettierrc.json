@@ -1,3 +1,12 @@
 {
-  "phpVersion": "8.0"
+	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 150,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"bracketSpacing": true,
+	"parenSpacing": true,
+	"semi": true,
+	"arrowParens": "avoid",
+	"plugins": ["@wordpress/prettier-config", "prettier-plugin-tailwindcss", "@prettier/plugin-php"]
 }

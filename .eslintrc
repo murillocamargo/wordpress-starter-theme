@@ -1,35 +1,24 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "plugins": [
-    "@typescript-eslint"
-  ],
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-  },
-  "rules": {
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "^_"
-      }
-    ],
-    "no-console": "warn",
-    "no-eval": "error",
-    "eqeqeq": ["error", "always"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    "no-trailing-spaces": "error",
-    "eol-last": ["error", "always"],
-    "no-unused-vars": "off"
-  }
+	"parser": "@typescript-eslint/parser",
+	"extends": ["eslint:recommended", "plugin:@wordpress/eslint-plugin/recommended"],
+	"env": {
+		"browser": true,
+		"es2020": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module"
+	},
+	"rules": {
+		"prettier/prettier": "warn",
+		"no-console": "off",
+		"camelcase": ["warn", { "allow": ["element_id"] }],
+		"no-eval": "error",
+		"eqeqeq": ["error", "always"],
+		"quotes": ["error", "single"],
+		"semi": ["error", "always"],
+		"no-trailing-spaces": "error",
+		"eol-last": ["error", "always"],
+		"no-unused-vars": "off"
+	}
 }
